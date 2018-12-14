@@ -3,6 +3,8 @@ package com.example.libraryAmdocs.model;
 import java.sql.Date;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 
@@ -11,8 +13,8 @@ public class BookTabStruct  {
 
     String bookName;
     int bookID;
-    Date bookAddDate;
-    boolean bookAvailFlag;
+    String bookAddDate;
+    char bookAvailFlag;
     public BookTabStruct() {
 		// TODO Auto-generated constructor stub
 	}
@@ -28,16 +30,18 @@ public class BookTabStruct  {
 	public void setBookID(int bookID) {
 		this.bookID = bookID;
 	}
-	public Date getBookAddDate() {
+	
+	public String getBookAddDate() {
 		return bookAddDate;
 	}
-	public void setBookAddDate(Date bookAddDate) {
-		this.bookAddDate = bookAddDate;
+	public void setBookAddDate(String date) {
+		this.bookAddDate = date;
 	}
-	public boolean getBookAvailFlag() {
+	
+	public char getBookAvailFlag() {
 		return bookAvailFlag;
 	}
-	public void setBookAvailFlag(boolean b) {
+	public void setBookAvailFlag(char b) {
 		this.bookAvailFlag = b;
 	}
 

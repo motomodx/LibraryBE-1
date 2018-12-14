@@ -24,18 +24,13 @@ public class UploadController {
 	@Autowired
 	UploadService uploadService;
 	
-	/*
-    @CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/readExcel")
-	public List<BookTabStruct> readExcel1() throws Exception
-	{
-		return uploadService.readExcel();
-	}
-	*/
-	@CrossOrigin(origins = "http://localhost:4200")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/writeExcel")
-	public void updateExcel(@RequestBody BookTabStruct obj ) throws IOException 
+	//public void updateExcel(@RequestBody BookTabStruct obj ) throws IOException 
+	public void updateExcel(BookTabStruct obj ) throws IOException
 	{
+		System.out.println("inside updateExcel");
+
 		uploadService.excelUpdateService(obj);
 	}
 
@@ -43,19 +38,7 @@ public class UploadController {
 	@GetMapping("/readExcel")
 	public List<BookTabStruct> readExcel() throws Exception
 	{
-		return uploadService.readExcel();
+		return uploadService.readBooksData();
 	}
-	
-	
-//	@RequestMapping("/hello")
-//    public String index() {
-//        return "Greetings from Spring Boot!";
-//    }
-	
-//	@PostMapping("/upload")
-//	public void upload(@RequestParam("file") MultipartFile file)
-//	{
-//		UploadService.upload(file);
-//	}
 	
 }

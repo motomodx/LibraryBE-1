@@ -33,12 +33,13 @@ public class UploadService {
 	@Autowired
 	excelReadRepo ExcelRead; 
 	
-	public List<BookTabStruct> readExcel() throws IOException {
-		return ExcelRead.excelReader();
+	public List<BookTabStruct> readBooksData() throws IOException {
+		return ExcelRead.bookReader();
 	}
 
 	public void excelUpdateService(BookTabStruct obj) throws IOException {
 		// TODO Auto-generated method stub
+		System.out.println("InsideexcelUpdateService ");
 		ExcelRead.excelUpdater(obj);
 	}
 	
