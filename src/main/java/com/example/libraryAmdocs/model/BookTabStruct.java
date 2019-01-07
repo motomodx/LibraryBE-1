@@ -1,10 +1,5 @@
 package com.example.libraryAmdocs.model;
 
-import java.sql.Date;
-
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 
