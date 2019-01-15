@@ -23,6 +23,7 @@ public class memberService {
 		System.out.println("Inside memberUpdateService ");
 		memberDb.insertMember(obj);
 	}
+	
 
 
 }

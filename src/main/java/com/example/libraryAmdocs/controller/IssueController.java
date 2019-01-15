@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.example.libraryAmdocs.model.BookTabStruct;
 import com.example.libraryAmdocs.model.IssueTabStruct;
 import com.example.libraryAmdocs.service.IssueService;
 
@@ -22,12 +23,16 @@ public class IssueController {
 	IssueService issueService ;
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/issueBook")
-
+//	public void issueBook () throws IOException {
+//		
+//		issueService.issueBookService() ;
+//		
+//	} 
     public void updateIssue(@RequestBody IssueTabStruct obj ) throws IOException {
 
 		System.out.println("inside updateISsue");
 
-		issueService.issueBookService(obj);
+		issueService.issueService(obj);
 	}
 	
 	//readIssuesData
@@ -41,4 +46,3 @@ public class IssueController {
 	
 
 }
-

@@ -1,13 +1,13 @@
 package com.example.libraryAmdocs.model;
 
 import org.springframework.stereotype.Component;
-
+import java.util.Date;
 
 @Component
 public class RequestTabStruct {
 	
-	int bookId ;
-	int memberId;
+	String bookId ;
+	String memberId;
 	String bookName;
 	String memberName;
 	String requestDate;
@@ -16,16 +16,16 @@ public class RequestTabStruct {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getBookId() {
+	public String getBookId() {
 		return bookId;
 	}
-	public void setBookId(int bookId) {
+	public void setBookId(String bookId) {
 		this.bookId = bookId;
 	}
-	public int getMemberId() {
+	public String getMemberId() {
 		return memberId;
 	}
-	public void setMemberId(int memberId) {
+	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
 	public String getBookName() {

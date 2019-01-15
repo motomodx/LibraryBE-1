@@ -18,7 +18,7 @@ public class HistoryController {
 	HistoryService historyService ;
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/bookHistory")
+	@GetMapping("/readHistory")
 	
 	public List<HistoryTabStruct> bookHistory() throws IOException{
 		return historyService.bookHistoryService();

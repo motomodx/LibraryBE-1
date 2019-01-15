@@ -5,20 +5,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class MemberTabStruct {
 	
-	int memberId ;
+	String memberId ;
 	String memberName;
-	String emailId;
-	String contactNum;
-	char   issuedFlag;
+	String EmailId;
+	String ContactNum;
+	String  IssuedFlag;
 	
 	public MemberTabStruct() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getMemberId() {
+	public String getMemberId() {
 		return memberId;
 	}
-	public void setMemberId(int memberId) {
+	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
 	public String getMemberName() {
@@ -28,22 +28,22 @@ public class MemberTabStruct {
 		this.memberName = memberName;
 	}
 	public String getEmailId() {
-		return emailId;
+		return EmailId;
 	}
 	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+		this.EmailId = emailId;
 	}
 	public String getContactNum() {
-		return contactNum;
+		return ContactNum;
 	}
 	public void setContactNum(String contactNum) {
-		this.contactNum = contactNum;
+		this.ContactNum = contactNum;
 	}
-	public char getIssuedFlag() {
-		return issuedFlag;
+	public String getIssuedFlag() {
+		return IssuedFlag;
 	}
-	public void setIssuedFlag(char issuedFlag) {
-		this.issuedFlag = issuedFlag;
+	public void setIssuedFlag(String string) {
+		this.IssuedFlag = string;
 	} 	
 
 }

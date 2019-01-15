@@ -2,18 +2,21 @@ package com.example.libraryAmdocs.repository;
 
 import java.io.IOException;
 import java.sql.Connection;
+//import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import com.example.libraryAmdocs.model.IssueTabStruct;
 
@@ -42,51 +45,58 @@ public class IssueDbOperations {
 		return conn ;
 	}
 	
-	
 	public List<IssueTabStruct> issueReader() throws IOException {
-		
-		List<IssueTabStruct> issueBookList = new ArrayList<IssueTabStruct>() ;
-		
-		
-		String issueListQuery = "SELECT * FROM ISSUE" ;
-		
-		try (Connection conn = this.connect();
-			 PreparedStatement pstmt = conn.prepareStatement(issueListQuery);) {
-			
-			System.out.println(pstmt);
-			
-			ResultSet rs = pstmt.executeQuery();
-			
-			while (rs.next()) {
-				System.out.println("book id = " + rs.getInt("book_id"));
-				System.out.println("book name = " + rs.getString("book_name"));
-				
-				IssueTabStruct issueResult = new IssueTabStruct();
-				
-				issueResult.setBookId(rs.getInt("book_id"));
-				issueResult.setBookName(rs.getString("book_name"));
-				issueResult.setIssueDate(rs.getString("issue_date"));
-				issueResult.setMemberId(rs.getInt("member_id"));
+	 	List<IssueTabStruct> jsonModelArray = new ArrayList<IssueTabStruct>();
+	 	DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+	 	String issueListQuery = "SELECT * FROM ISSUE";
+	 	  System.out.println(issueListQuery);
+	 	 try (Connection conn = this.connect();
+	 		    PreparedStatement pstmt = conn.prepareStatement(issueListQuery)) {
+
+	 		    System.out.println(pstmt);
+	 		   
+	 		    ResultSet rs = pstmt.executeQuery();
+	 		    while(rs.next()) {
+	 		    System.out.println("book id = " + rs.getString("book_id"));
+	 		    System.out.println("book name = " + rs.getString("book_name"));
+	 		    IssueTabStruct issueResult = new IssueTabStruct();
+//	 		    try {
+//	 		      Date today = df.parse(rs.getString("issue_date"));
+//	 		      System.out.println("Today = " + df.format(today));
+//	 		      issueResult.setIssueDate(df.format(today));
+//	 		    } catch (ParseException e) {
+//	 		     e.printStackTrace();
+//	 		    }
+	 		    	 		    
+	 		    issueResult.setIssueDate(rs.getString("issuedate"));
+	 		    issueResult.setBookId(rs.getString("book_id"));
+	 		   	issueResult.setBookName(rs.getString("book_name"));
+	 		   	issueResult.setMemberId(rs.getString("member_id"));
 				issueResult.setMemberName(rs.getString("member_name"));
 	 		    
-				issueBookList.add(issueResult);
-			}
-			System.out.println("Activity logged");
+	 		    jsonModelArray.add(issueResult);
+	 		  		   
+	 		    }
+	 		  
+	 		   System.out.println("Activity logged");
 	 		   conn.close();
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
-	   return issueBookList;
-	}
-		
+	 		  } catch (SQLException e) {
+	 		   System.out.println(e.getMessage());
+	 		   
+	 		  }
+	 	 
+	 	 return jsonModelArray; 
+
+}
 	
 	
 	public void issueDb(IssueTabStruct obj) {
 		
-		String issueInsQuery = "INSERT INTO BOOK_ISSUE (BOOK_ID, MEMBER_ID, BOOK_NAME, MEMBER_NAME) VALUES (?, ?, ?, ?)" ;
+		String issueInsQuery = "INSERT INTO ISSUE (BOOK_ID, MEMBER_ID, BOOK_NAME, MEMBER_NAME,ISSUEDATE) VALUES (?, ?, ?, ?,?)" ;
+		//issue_date is missing
 		String updBookQuery = "UPDATE BOOKS SET AVAL_FLAG = 'N' WHERE BOOK_ID = ?" ;
 		String updMemberQuery = "UPDATE MEMBER SET ISSUEDFLAG = 'N' WHERE MEMBER_ID = ? " ;
-		String delRequestQuery = "DELETE FROM BOOK_REQUEST WHERE BOOK_ID = ? AND MEMBER_ID = ? " ;
+		String delRequestQuery = "DELETE FROM REQUEST WHERE BOOK_ID = ? AND MEMBER_ID = ? " ;
 		
 		Date todayDate = new Date();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -96,33 +106,32 @@ public class IssueDbOperations {
 		Connection conn = this.connect() ;
 		PreparedStatement insStmt = conn.prepareStatement(issueInsQuery);
 		
-		insStmt.setInt(1, obj.getBookId());
-		insStmt.setInt(2, obj.getMemberId());
+		insStmt.setString(1, obj.getBookId());
+		insStmt.setString(2, obj.getMemberId());
 		insStmt.setString(3, obj.getBookName());
 		insStmt.setString(4, obj.getMemberName());
-		insStmt.setString(5, strTodayDate );
-		
+		insStmt.setString(5, strTodayDate);
 		System.out.println(insStmt);
 		
 		insStmt.executeUpdate();
 		
 		PreparedStatement upBookStmt = conn.prepareStatement(updBookQuery);
-		upBookStmt.setInt(1, obj.getBookId());
+		upBookStmt.setString(1, obj.getBookId());
 		
 		System.out.println(upBookStmt);
 		
 		upBookStmt.executeUpdate();
 		
 		PreparedStatement upMemberStmt = conn.prepareStatement(updMemberQuery) ;
-		upMemberStmt.setInt(1, obj.getMemberId());
+		upMemberStmt.setString(1, obj.getMemberId());
 		
 		System.out.println(upMemberStmt);
 		
 		upMemberStmt.executeUpdate();
 		
 		PreparedStatement delReqStmt = conn.prepareStatement(delRequestQuery);
-		delReqStmt.setInt(1, obj.getBookId());
-		delReqStmt.setInt(2, obj.getMemberId());
+		delReqStmt.setString(1, obj.getBookId());
+		delReqStmt.setString(2, obj.getMemberId());
 		
 		System.out.println(delReqStmt);
 		

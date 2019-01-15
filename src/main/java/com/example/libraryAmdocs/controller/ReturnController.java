@@ -5,6 +5,9 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.libraryAmdocs.model.IssueTabStruct;
@@ -17,8 +20,8 @@ public class ReturnController {
 	ReturnService    returnService ;
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping("/returnBook") 
-	public void returnBook (IssueTabStruct  obj) throws IOException
+	@RequestMapping(value="/returnBook",method = RequestMethod.POST)
+	public void returnBook ( @RequestBody IssueTabStruct  obj) throws IOException
 	{
 		System.out.println("Inside returnBook");
 		returnService.returnBookService(obj);

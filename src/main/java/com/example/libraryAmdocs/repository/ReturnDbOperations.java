@@ -6,15 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import com.example.libraryAmdocs.model.HistoryTabStruct;
+import com.example.libraryAmdocs.model.IssueTabStruct;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.libraryAmdocs.model.HistoryTabStruct;
-import com.example.libraryAmdocs.model.IssueTabStruct;
-
-@Repository
+@Repository 
 public class ReturnDbOperations {
 	
 	@Autowired
@@ -40,14 +39,15 @@ public class ReturnDbOperations {
 		return conn ;
 	}
 	
-	public void returnDb (IssueTabStruct objInpData) {
+
+public void returnDb (IssueTabStruct objInpData) {
 		
 		System.out.println("Inside returnBook ");
 		
-		String insHisQuery = "INSERT INTO BOOK_HISTORY (BOOK_ID, MEMBER_ID, BOOK_NAME, MEMBER_NAME, ISSUE_DATE, SUBMIT_DATE) VALUES (?, ?, ?, ?, ?, ?) ";
-		String updBookQuery = "UPDATE BOOK SET BOOK_AVAILABLE = 'Y' WHERE BOOK_ID = (?)";
-		String updMemberQuery = "UPDATE MEMBER SET ISSUED_STATUS = 'N' WHERE MEMBER_ID = (?)";
-		String delRequestQuery = "DELETE FROM BOOK_ISSUE WHERE BOOK_ID = (?) AND MEMBER_ID = (?)";
+		String insHisQuery = "INSERT INTO HISTORY (BOOK_ID, MEMBER_ID, BOOK_NAME, MEMBER_NAME, ISSUEDATE, SUBMITDATE) VALUES (?, ?, ?, ?, ?, ?) ";
+		String updBookQuery = "UPDATE BOOKS SET AVAL_FLAG = 'Y' WHERE BOOK_ID = (?)";
+		String updMemberQuery = "UPDATE MEMBER SET issuedFlag = 'Y' WHERE MEMBER_ID = (?)";
+		String delRequestQuery = "DELETE FROM ISSUE WHERE BOOK_ID = (?) AND MEMBER_ID = (?)";
 		
 		Date todayDate = new Date();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -57,8 +57,8 @@ public class ReturnDbOperations {
 			Connection conn = this.connect();
 			PreparedStatement insHisStmt = conn.prepareStatement(insHisQuery);
 			
-			insHisStmt.setInt(1, objInpData.getBookId());
-			insHisStmt.setInt(2, objInpData.getMemberId());
+			insHisStmt.setString(1, objInpData.getBookId());
+			insHisStmt.setString(2, objInpData.getMemberId());
 			insHisStmt.setString(3, objInpData.getBookName());
 			insHisStmt.setString(4, objInpData.getMemberName());
 			insHisStmt.setString(5, objInpData.getIssueDate());
@@ -69,22 +69,22 @@ public class ReturnDbOperations {
 			insHisStmt.executeUpdate();
 			
 			PreparedStatement upBookStmt = conn.prepareStatement(updBookQuery);
-			upBookStmt.setInt(1, objInpData.getBookId());
+			upBookStmt.setString(1, objInpData.getBookId());
 			
 			System.out.println(upBookStmt);
 			
 			upBookStmt.executeUpdate();
 			
 			PreparedStatement upMemberStmt = conn.prepareStatement(updMemberQuery);
-			upMemberStmt.setInt(1, objInpData.getMemberId());
+			upMemberStmt.setString(1, objInpData.getMemberId());
 			
             System.out.println(upMemberStmt);
 			
             upMemberStmt.executeUpdate();
             
             PreparedStatement delRequestStmt = conn.prepareStatement(delRequestQuery);
-            delRequestStmt.setInt(1, objInpData.getBookId());
-            delRequestStmt.setInt(2, objInpData.getMemberId());
+            delRequestStmt.setString(1, objInpData.getBookId());
+            delRequestStmt.setString(2, objInpData.getMemberId());
             
             System.out.println(delRequestStmt);
             
@@ -95,5 +95,56 @@ public class ReturnDbOperations {
 			}
 				
 	}
+	
+	
+//	public void returnDb (HistoryTabStruct objInpData) {
+//		
+//		System.out.println("Inside returnBook ");
+//		
+//		String insHisQuery = "INSERT INTO BOOK_HISTORY (BOOK_ID, MEMBER_ID, BOOK_NAME, MEMBER_NAME) VALUES (?, ?, ?, ?) ";
+//		String updBookQuery = "UPDATE BOOK SET BOOK_AVAILABLE = 'Y' WHERE BOOK_ID = (?)";
+//		String updMemberQuery = "UPDATE MEMBER SET ISSUED_STATUS = 'N' WHERE MEMBER_ID = (?)";
+//		String delRequestQuery = "DELETE FROM BOOK_ISSUE WHERE BOOK_ID = (?) AND MEMBER_ID = (?)";
+//		
+//		try {
+//			Connection conn = this.connect();
+//			PreparedStatement insHisStmt = conn.prepareStatement(insHisQuery);
+//			
+//			insHisStmt.setString(1, objInpData.getBookId());
+//			insHisStmt.setString(2, objInpData.getMemberId());
+//			insHisStmt.setString(3, objInpData.getBookName());
+//			insHisStmt.setString(4, objInpData.getMemberName());
+//			
+//			System.out.println(insHisStmt);
+//			
+//			insHisStmt.executeUpdate();
+//			
+//			PreparedStatement upBookStmt = conn.prepareStatement(updBookQuery);
+//			upBookStmt.setString(1, objInpData.getBookId());
+//			
+//			System.out.println(upBookStmt);
+//			
+//			upBookStmt.executeUpdate();
+//			
+//			PreparedStatement upMemberStmt = conn.prepareStatement(updMemberQuery);
+//			upMemberStmt.setString(1, objInpData.getMemberId());
+//			
+//            System.out.println(upMemberStmt);
+//			
+//            upMemberStmt.executeUpdate();
+//            
+//            PreparedStatement delRequestStmt = conn.prepareStatement(delRequestQuery);
+//            delRequestStmt.setString(1, objInpData.getBookId());
+//            delRequestStmt.setString(2, objInpData.getMemberId());
+//            
+//            System.out.println(delRequestStmt);
+//            
+//            delRequestStmt.executeUpdate() ;
+//
+//			} catch (SQLException e) {
+//			   System.out.println(e.getMessage());
+//			}
+//				
+//	}
 
 }

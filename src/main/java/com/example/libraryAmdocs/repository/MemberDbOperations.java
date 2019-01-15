@@ -48,18 +48,18 @@ public class MemberDbOperations {
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				System.out.println("Member id = " + rs.getInt("memberId"));
-				System.out.println("Member name = " + rs.getString("memberName"));
-				System.out.println("Email id = " + rs.getString("emailId"));
-				System.out.println("Contact Number = " + rs.getString("contactNum"));
+				System.out.println("Member id = " + rs.getInt("member_Id"));
+				System.out.println("Member name = " + rs.getString("member_name"));
+				System.out.println("Email id = " + rs.getString("email"));
+				System.out.println("Contact Number = " + rs.getString("phoneNo"));
 				
 				MemberTabStruct memberResult = new MemberTabStruct();
 				
-				memberResult.setMemberId(rs.getInt("memberId"));
-				memberResult.setMemberName(rs.getString("memberName"));
-				memberResult.setEmailId(rs.getString("emailId"));
-				memberResult.setContactNum(rs.getString("contactNum"));
-				memberResult.setIssuedFlag(rs.getString("issued_flag").charAt(0));	
+				memberResult.setMemberId(rs.getString("member_Id"));
+				memberResult.setMemberName(rs.getString("member_name"));
+				memberResult.setEmailId(rs.getString("email"));
+				memberResult.setContactNum(rs.getString("phoneNo"));
+				memberResult.setIssuedFlag(rs.getString("IssuedFlag"));
 				
 				memberList.add(memberResult);
 				
@@ -78,7 +78,7 @@ public class MemberDbOperations {
 		
 		System.out.println("Inside insertMember");
 		
-		String memberInsertQuery = "INSERT INTO MEMBER (member_id , member_name , email_id , contact_num , issued_flag) VALUES (?, ?, ?, ?, ?) ";
+		String memberInsertQuery = "INSERT INTO MEMBER (member_id , member_name , email , phoneNo , issuedFlag) VALUES (?, ?, ?, ?, ?) ";
 		String memberIdGetQuery = "SELECT MAX(member_id) max_member_id from MEMBER";
 		int newMemberId = 0 ;
 		

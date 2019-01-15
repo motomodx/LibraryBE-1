@@ -45,7 +45,7 @@ public class HistoryDbOperations {
 		List<HistoryTabStruct> returnBookList = new ArrayList<HistoryTabStruct>();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
-		String returnListQuery = "SELECT * FROM BOOK_HISTORY" ;
+		String returnListQuery = "SELECT * FROM HISTORY" ;
 		
 		try (Connection conn = this.connect();
 				 PreparedStatement pstmt = conn.prepareStatement(returnListQuery);) {
@@ -55,17 +55,17 @@ public class HistoryDbOperations {
 				ResultSet rs = pstmt.executeQuery();
 				
 				while (rs.next()) {
-					System.out.println("book id = " + rs.getInt("book_id"));
+					System.out.println("book id = " + rs.getString("book_id"));
 					System.out.println("book name = " + rs.getString("book_name"));
 					
 					HistoryTabStruct historyResult = new HistoryTabStruct();
 					
-					historyResult.setBookId(rs.getInt("book_id"));
+					historyResult.setBookId(rs.getString("book_id"));
 					historyResult.setBookName(rs.getString("book_name"));
-					historyResult.setIssueDate(rs.getString("issue_date"));
-					historyResult.setMemberId(rs.getInt("member_id"));
+					historyResult.setIssueDate(rs.getString("issuedate"));
+					historyResult.setMemberId(rs.getString("member_id"));
 					historyResult.setMemberName(rs.getString("member_name"));
-		 		    
+		 		    historyResult.setSubmitDate(rs.getString("submitdate"));
 					returnBookList.add(historyResult);
 				}
 				System.out.println("Activity logged");
