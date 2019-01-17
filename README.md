@@ -14,8 +14,8 @@ Step 3:
 Open command prompt, type command “npm install –g @angular/cli” . It will install CLI globally where g represents globally. To check Angular CLI installed type command ng –v
 
 If this works then fine else first proxy has to be setup
-C:\WINDOWS\system32>npm config set proxy http://genproxy.amdocs.com:8080
-C:\WINDOWS\system32>npm config set https-proxy http://genproxy.amdocs.com:8080
+C:\WINDOWS\system32>npm config set proxy <your proxy>
+C:\WINDOWS\system32>npm config set https-proxy <your proxy>
 C:\WINDOWS\system32>npm install –g @angular/cli
 
 Step 4: (IDE – download Visual studio )
