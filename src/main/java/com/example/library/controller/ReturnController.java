@@ -1,4 +1,4 @@
-package com.example.libraryAmdocs.controller;
+package com.example.library.controller;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.libraryAmdocs.model.IssueTabStruct;
-import com.example.libraryAmdocs.service.ReturnService;
+import com.example.library.model.IssueTabStruct;
+import com.example.library.service.ReturnService;
 
 @RestController
 public class ReturnController {

@@ -1,4 +1,4 @@
-package com.example.libraryAmdocs.repository;
+package com.example.library.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.sql.Connection;
 
-import com.example.libraryAmdocs.model.RequestTabStruct ;
+import com.example.library.model.RequestTabStruct ;
 
 import java.io.IOException;
 import java.sql.Connection;

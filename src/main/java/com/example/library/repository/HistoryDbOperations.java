@@ -1,4 +1,4 @@
-package com.example.libraryAmdocs.repository;
+package com.example.library.repository;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -14,7 +14,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.libraryAmdocs.model.HistoryTabStruct;
+import com.example.library.model.HistoryTabStruct;
 
 @Repository
 public class HistoryDbOperations {

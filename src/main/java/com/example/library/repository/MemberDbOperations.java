@@ -1,9 +1,9 @@
-package com.example.libraryAmdocs.repository;
+package com.example.library.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.libraryAmdocs.model.MemberTabStruct;
+import com.example.library.model.MemberTabStruct;
 
 import java.io.IOException;
 import java.sql.Connection;

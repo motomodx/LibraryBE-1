@@ -1,4 +1,4 @@
-package com.example.libraryAmdocs.controller;
+package com.example.library.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.libraryAmdocs.model.BookTabStruct;
-import com.example.libraryAmdocs.model.IssueTabStruct;
-import com.example.libraryAmdocs.model.MemberTabStruct;
-import com.example.libraryAmdocs.service.memberService;
+import com.example.library.model.BookTabStruct;
+import com.example.library.model.IssueTabStruct;
+import com.example.library.model.MemberTabStruct;
+import com.example.library.service.memberService;
 
 @RestController
 public class memberCotroller {

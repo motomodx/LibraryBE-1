@@ -1,4 +1,4 @@
-package com.example.libraryAmdocs.service;
+package com.example.library.service;
 
 import java.io.IOException;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.libraryAmdocs.model.MemberTabStruct;
-import com.example.libraryAmdocs.repository.MemberDbOperations;
+import com.example.library.model.MemberTabStruct;
+import com.example.library.repository.MemberDbOperations;
 
 @Service
 public class memberService {

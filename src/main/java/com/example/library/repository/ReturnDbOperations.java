@@ -1,4 +1,4 @@
-package com.example.libraryAmdocs.repository;
+package com.example.library.repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import com.example.libraryAmdocs.model.HistoryTabStruct;
-import com.example.libraryAmdocs.model.IssueTabStruct;
+import com.example.library.model.HistoryTabStruct;
+import com.example.library.model.IssueTabStruct;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;

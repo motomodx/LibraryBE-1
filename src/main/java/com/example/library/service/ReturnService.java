@@ -1,12 +1,12 @@
-package com.example.libraryAmdocs.service;
+package com.example.library.service;
 
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.libraryAmdocs.model.IssueTabStruct;
-import com.example.libraryAmdocs.repository.ReturnDbOperations;
+import com.example.library.model.IssueTabStruct;
+import com.example.library.repository.ReturnDbOperations;
 
 @Service
 public class ReturnService {

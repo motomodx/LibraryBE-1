@@ -1,4 +1,4 @@
-package com.example.libraryAmdocs.repository;
+package com.example.library.repository;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -12,13 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.text.DateFormat;
-import java.text.ParseException;
+//import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.example.libraryAmdocs.model.IssueTabStruct;
+import com.example.library.model.IssueTabStruct;
 
 @Repository 
 public class IssueDbOperations {

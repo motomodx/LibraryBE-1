@@ -1,33 +1,31 @@
-package com.example.libraryAmdocs.model;
+package com.example.library.model;
 
 import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-public class HistoryTabStruct {
-
-	String    bookId;
-	String    memberId;
-	String bookName ;
+public class IssueTabStruct {
+	
+	String memberId;
+	String bookId;
+	String bookName;
 	String memberName;
 	String   issueDate;
-	String   submitDate;
 	
-	public HistoryTabStruct() {
+	public IssueTabStruct() {
 		// TODO Auto-generated constructor stub
-	}
-	
-	public String getBookId() {
-		return bookId;
-	}
-	public void setBookId(String bookId) {
-		this.bookId = bookId;
 	}
 	public String getMemberId() {
 		return memberId;
 	}
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
+	}
+	public String getBookId() {
+		return bookId;
+	}
+	public void setBookId(String bookId) {
+		this.bookId = bookId;
 	}
 	public String getBookName() {
 		return bookName;
@@ -47,11 +45,5 @@ public class HistoryTabStruct {
 	public void setIssueDate(String issueDate) {
 		this.issueDate = issueDate;
 	}
-	public String getSubmitDate() {
-		return submitDate;
-	}
-	public void setSubmitDate(String submitDate) {
-		this.submitDate = submitDate;
-	}
-	
+
 }

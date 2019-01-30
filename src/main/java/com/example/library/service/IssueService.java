@@ -1,4 +1,4 @@
-package com.example.libraryAmdocs.service;
+package com.example.library.service;
 
 import java.io.IOException;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.libraryAmdocs.model.BookTabStruct;
-import com.example.libraryAmdocs.model.IssueTabStruct;
-import com.example.libraryAmdocs.repository.IssueDbOperations;
+import com.example.library.model.BookTabStruct;
+import com.example.library.model.IssueTabStruct;
+import com.example.library.repository.IssueDbOperations;
 
 @Service
 public class IssueService {

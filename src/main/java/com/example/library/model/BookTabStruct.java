@@ -1,4 +1,4 @@
-package com.example.libraryAmdocs.model;
+package com.example.library.model;
 
 import java.sql.Date;
 

@@ -1,4 +1,4 @@
-package com.example.libraryAmdocs.service;
+package com.example.library.service;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,9 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.libraryAmdocs.model.BookTabStruct;
+import com.example.library.model.BookTabStruct;
 
-import com.example.libraryAmdocs.repository.excelReadRepo;
+import com.example.library.repository.excelReadRepo;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;

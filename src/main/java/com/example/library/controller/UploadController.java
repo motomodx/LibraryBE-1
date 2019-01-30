@@ -1,4 +1,4 @@
-package com.example.libraryAmdocs.controller;
+package com.example.library.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.libraryAmdocs.model.*;
-import com.example.libraryAmdocs.service.UploadService;
+import com.example.library.model.*;
+import com.example.library.service.UploadService;
 
 @RestController
 public class UploadController {

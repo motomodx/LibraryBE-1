@@ -1,4 +1,4 @@
-package com.example.libraryAmdocs.controller;
+package com.example.library.controller;
 
 
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.libraryAmdocs.model.BookTabStruct;
-import com.example.libraryAmdocs.model.RequestTabStruct;
-import com.example.libraryAmdocs.service.RequestService ;
+import com.example.library.model.BookTabStruct;
+import com.example.library.model.RequestTabStruct;
+import com.example.library.service.RequestService ;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController

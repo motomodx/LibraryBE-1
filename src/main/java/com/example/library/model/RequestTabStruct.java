@@ -1,4 +1,4 @@
-package com.example.libraryAmdocs.model;
+package com.example.library.model;
 
 import org.springframework.stereotype.Component;
 import java.util.Date;
