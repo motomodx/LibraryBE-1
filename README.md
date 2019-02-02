@@ -48,7 +48,7 @@ Step 2:
 Download Eclipse
 http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/3/eclipse-jee-neon-3-win32-x86_64.zip
 
-after installation follow the steps to do proxy setup for Amdocs network
+
 step 1: Go to windows->preferences-General->Network connections
 step 2: Enter the proxy as per attachment “eclipse-proxy”
 
@@ -59,11 +59,11 @@ Download Maven from https://maven.apache.org/download.cgi for Windows go for “
 Installing maven
 Step 1: unzip it and place the folder in C:/program files
 Step 2: set the environment path variable for maven in path variable as “C:\Program Files\apache-maven-3.5.4\bin”
-Step 3: for setting Amdocs proxy: place the file settings.xml(attached) at location “C:\Users\kua\.m2” 
+Step 3: for setting proxy: place the file settings.xml(attached) at location “C:\Users\kua\.m2” 
 Step 4: check for the maven successful installation on Command prompt by running command “mvn –version”
 
 Regarding the backend-library  project 
-Step 1: open Eclipse and “new->open projects from filesystem->directory path of your libraryAmdocs-backend folder”.
+Step 1: open Eclipse and “new->open projects from filesystem->directory path of your library-backend folder”.
 Step2: click on Run->Run As-> maven install
 Step3: after success full building of previous click  Run->RunAs->java application
 Step4: it will open port 9090 for interaction.
