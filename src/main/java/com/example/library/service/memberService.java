@@ -19,9 +19,23 @@ public class memberService {
 		return memberDb.getAllMembers();
 	}
 	
-	public void memberUpdateService(MemberTabStruct obj) throws IOException {
+	public void memberUpdateService(MemberTabStruct obj, String reqFlag) throws IOException {
 		System.out.println("Inside memberUpdateService ");
-		memberDb.insertMember(obj);
+		if (reqFlag.equals("I")) {
+			System.out.println("Flag received as Insert ");
+			memberDb.insertMember(obj);
+		} else if (reqFlag.equals("U")) {
+			System.out.println("Flag received as Update ");
+			memberDb.updateMember(obj);
+			}
+		else if (reqFlag.equals("D")) {
+			System.out.println("Flag received as Delete ");
+			memberDb.deleteMember(obj);
+		}
+		else {
+			System.out.println("Invalid request ");
+		
+		}
 	}
 	
 

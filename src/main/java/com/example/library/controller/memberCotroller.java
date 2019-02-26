@@ -22,18 +22,14 @@ public class memberCotroller {
 	
 	@Autowired
 	memberService memService ;
-	
-	
+		
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value="/writeMember",method = RequestMethod.POST) 
-	public void updateMember(@RequestBody MemberTabStruct obj ) throws IOException
+	public void updateMember(@RequestBody MemberTabStruct obj, String reqFlag) throws IOException
 	{
 		System.out.println("inside updateMember");
-
-		memService.memberUpdateService(obj);
+		memService.memberUpdateService(obj, reqFlag);
 	}
-	
-	
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/readMem")

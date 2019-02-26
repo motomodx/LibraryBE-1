@@ -80,7 +80,7 @@ public class MemberDbOperations {
 		
 		String memberInsertQuery = "INSERT INTO MEMBER (member_id , member_name , email , phoneNo , issuedFlag) VALUES (?, ?, ?, ?, ?) ";
 		String memberIdGetQuery = "SELECT MAX(member_id) max_member_id from MEMBER";
-		int newMemberId = 0 ;
+		int newMemberId = 0;
 		
 		try( Connection conn = this.connect() ;
 			 PreparedStatement pstmt = conn.prepareStatement(memberIdGetQuery) ;) {
@@ -110,7 +110,70 @@ public class MemberDbOperations {
 		} catch ( SQLException e ) {
 			System.out.println(e.getMessage());	
 		}
+		}
+
 	
+public void updateMember(MemberTabStruct objInpData) throws IOException {
+		
+		System.out.println("Inside updateMember");
+		
+		String memberInsertQuery = "UPDATE MEMBER (member_name , email , phoneNo , issuedFlag) VALUES (?, ?, ?, ?) WHERE member_id = ?";
+		/*String memberIdGetQuery = "SELECT MAX(member_id) max_member_id from MEMBER";*/
+		int newMemberId = 0;
+		
+		try( Connection conn = this.connect() ;
+			 PreparedStatement pstmt = conn.prepareStatement(memberInsertQuery) ;) {
+			
+			/*ResultSet rs = pstmt.executeQuery();*/
+			System.out.println("Input Member ID - " + objInpData.getMemberId());
+			System.out.println("Input Member Name - " + objInpData.getMemberName());
+			System.out.println("Input Member Email - " + objInpData.getEmailId());
+			System.out.println("Input Contact Number - " + objInpData.getContactNum());
+			System.out.println("Input issued flag - " + objInpData.getIssuedFlag());
+			
+			PreparedStatement memInsStmt = conn.prepareStatement(memberInsertQuery) ;
+			
+			memInsStmt.setString(1, objInpData.getMemberName());
+			memInsStmt.setString(2, objInpData.getEmailId());
+			memInsStmt.setString(3, objInpData.getContactNum());
+			memInsStmt.setString(4, String.valueOf(objInpData.getIssuedFlag()));
+			memInsStmt.setString(5, objInpData.getMemberId() );
+			
+			System.out.println(memInsStmt);
+		    memInsStmt.executeUpdate();
+		    
+		    System.out.println("Update Executed");		
+		} catch ( SQLException e ) {
+			System.out.println(e.getMessage());	
+		}
+		}
+
+
+public void deleteMember(MemberTabStruct objInpData) throws IOException {
+	
+	System.out.println("Inside deleteMember");
+	
+	String memberDeleteQuery = "DELETE FROM MEMBER WHERE member_id = ?";
+	/*String memberIdGetQuery = "SELECT MAX(member_id) max_member_id from MEMBER";*/
+	int newMemberId = 0;
+	
+	try( Connection conn = this.connect() ;
+		 PreparedStatement pstmt = conn.prepareStatement(memberDeleteQuery) ;) {
+		
+		/*ResultSet rs = pstmt.executeQuery();*/
+		System.out.println("Input Member ID - " + objInpData.getMemberId());
+				
+		PreparedStatement memInsStmt = conn.prepareStatement(memberDeleteQuery) ;
+		
+		memInsStmt.setString(1, objInpData.getMemberId() );
+		
+		System.out.println(memInsStmt);
+	    memInsStmt.executeUpdate();
+	    
+	    System.out.println("Delete Executed");		
+	} catch ( SQLException e ) {
+		System.out.println(e.getMessage());	
 	}
-	
+	}
+
 }
